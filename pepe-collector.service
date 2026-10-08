@@ -1,0 +1,16 @@
+[Unit]
+Description=PEPE Binance to Supabase collector
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pepecollector
+WorkingDirectory=/opt/pepe-collector
+EnvironmentFile=/opt/pepe-collector/.env
+ExecStart=/opt/pepe-collector/.venv/bin/python /opt/pepe-collector/pepe_collector.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
